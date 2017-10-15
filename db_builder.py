@@ -1,3 +1,9 @@
+'''
+Bayan Berri 
+Softdev 1 pd7
+k09-- no treble
+2017-10-16
+'''
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
 
@@ -15,13 +21,15 @@ crses= open("courses.csv")
 courses= csv.DictReader(crses)
 
 #==========================================================
-              
+
+#~~~~~~~~~~~~~~~~~~creating tables~~~~~~~~~~~~~~~~~~~             
 command= "CREATE TABLE peeps(name TEXT, age INTEGER, id INTEGER)"
 c.execute(command)
 
 command= "CREATE TABLE courses(code TEXT, mark INTEGER, id INTEGER)"
 c.execute(command)
 
+#~~~~~~~~~~~~~~~~~~populating tables~~~~~~~~~~~~~~~~~~~
 for each in peeps:
     print each
     add= "INSERT INTO peeps VALUES ('" + each['name'] + "'," + each['age'] + "," + each['id'] + ")"
