@@ -4,6 +4,7 @@ Softdev 1 pd7
 k09-- no treble
 2017-10-16
 '''
+
 import sqlite3   #enable control of an sqlite database
 import csv       #facilitates CSV I/O
 
@@ -30,17 +31,16 @@ command= "CREATE TABLE courses(code TEXT, mark INTEGER, id INTEGER)"
 c.execute(command)
 
 #~~~~~~~~~~~~~~~~~~populating tables~~~~~~~~~~~~~~~~~~~
-for each in peeps:
-    print each
-    add= "INSERT INTO peeps VALUES ('" + each['name'] + "'," + each['age'] + "," + each['id'] + ")"
-    c.execute(add)
+def populate(dictionary, tbln, col1,col2,col3):
+    for each in dictionary:
+        print each
+        add= "INSERT INTO "+ tbln + " VALUES ('" + each[col1] + "'," + each[col2] + "," + each[col3] + ")"
+        c.execute(add)
 
-for each in courses:
-    print each
-    add= "INSERT INTO courses VALUES ('" + each['code'] + "'," + each['mark'] + "," + each['id'] + ")"
-    c.execute(add)
 
-    
+populate(peeps,'peeps', 'name','age','id')
+populate(courses,'courses', 'code','mark','id')
+
 #==========================================================
 
 db.commit() #save changes
